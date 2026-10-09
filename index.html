@@ -7,19 +7,6 @@
 <meta name="description" content="Portfolio of an independent game developer: Unity, C#, and games built at Gamerev Games.">
 <meta name="theme-color" content="#0f1117">
 
-<!--
-  ============================================================
-  HOW TO EDIT THIS PAGE
-  ============================================================
-  Search this file for "EDIT:" to find every spot you should change.
-  - Replace "Your Name" everywhere (page title, nav, hero, footer).
-  - Each project is one <article class="card"> block. Copy/paste to add more.
-  - To use a real screenshot, put an image in an "images" folder in the repo
-    and replace the <div class="thumb">...</div> contents with:
-        <img src="images/my-game.png" alt="Screenshot of My Game">
-  - Replace every href="#" with a real link (Steam, itch.io, YouTube, GitHub).
--->
-
 <style>
   :root {
     --bg: #0f1117;
@@ -96,6 +83,15 @@
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
   .btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
   .btn.ghost:hover { border-color: var(--accent); }
+  .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .hero-text { flex: 1; min-width: 0; }
+  .hero-photo {
+    width: 260px; height: 260px; flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 8px rgba(224, 51, 79, 0.15), 0 16px 40px rgba(0, 0, 0, 0.45);
+  }
 
   /* ---------- Sections ---------- */
   section { padding: 84px 0; }
@@ -182,6 +178,10 @@
     .grid { grid-template-columns: repeat(2, 1fr); }
     .about { grid-template-columns: 1fr; gap: 30px; }
   }
+  @media (max-width: 800px) {
+    .hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 28px; }
+    .hero-photo { width: 160px; height: 160px; }
+  }
   @media (max-width: 600px) {
     .grid { grid-template-columns: 1fr; }
     .hero { padding: 64px 0 56px; }
@@ -216,19 +216,22 @@
 <main id="top">
 
   <!-- ============ HERO ============ -->
-  <div class="hero">
+    <div class="hero">
     <div class="wrap">
-      <span class="eyebrow">Independent Game Developer</span>
-      <!-- EDIT: your name -->
-      <h1>Hi, I'm <em>Travis Carpenter</em>.<br>I build games.</h1>
-      <!-- EDIT: one or two sentences about what you do -->
-      <p class="lead">
-        I'm the developer behind Gamerev Games, making games in Unity and C#.
-        Below is a selection of what I've built.
-      </p>
-      <div class="btns">
-        <a class="btn primary" href="#projects">View my work</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="eyebrow">Independent Game Developer</span>
+          <h1>Hi, I'm <em>Travis Carpenter</em>.<br>I build games.</h1>
+          <p class="lead">
+            I'm the developer behind Gamerev Games, making games in Unity and C#.
+            Below is a selection of what I've built.
+          </p>
+          <div class="btns">
+            <a class="btn primary" href="#projects">View my work</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <img class="hero-photo" src="images/travis_portrait.png" alt="Photo of Travis Carpenter" width="260" height="260">
       </div>
     </div>
   </div>

@@ -155,24 +155,7 @@
       </div>
     </section>
 
-    <!-- ============ GIF OR LOOPING CLIP (OPTIONAL) ============
-         A real GIF file also works: just use <img src="/images/clip.gif" ...> inside a figure.
-         For long clips, convert to .mp4. It will be roughly 10x smaller and load faster. -->
-    <section class="proj-section prose">
-      <h2>In Action</h2>
-      <p>Show the feature working.</p>
-
-      <figure class="media">
-        <video src="/images/PROJECT-clip.mp4" autoplay loop muted playsinline preload="metadata"
-               aria-label="DESCRIBE what happens in the clip"></video>
-        <figcaption>Short caption for the clip.</figcaption>
-      </figure>
-    </section>
-
-    <!-- ============ ACCORDIONS (CLICK-TO-EXPAND DETAILS) ============
-         Use these for deeper information that not everyone needs.
-         Add the word  open  to a <details> tag to have it start expanded:  <details open>
-         To add another item, copy a whole <details> ... </details> block. -->
+    <!-- ============ ACCORDIONS (CLICK-TO-EXPAND DETAILS) ============ -->
     <section class="proj-section prose">
       <h2>Going Deeper</h2>
       <p>Click a section to expand it.</p>
@@ -182,11 +165,37 @@
         <details>
           <summary>How it works</summary>
           <div class="acc-body">
-            <p>Explain the system or approach in plain language.</p>
-            <ul>
-              <li>Step or component one</li>
-              <li>Step or component two</li>
-            </ul>
+            <p>Every attack moves through the same sequence of stages:</p>
+              <ol>
+                <li>
+                  <strong>Input.</strong> The input system reads the attack input along with the
+                  player's movement direction.
+                </li>
+                <li>
+                  <strong>Targeting.</strong> The system uses the camera angle and input direction to work out
+                  which enemy to engage and where the player should attack from and glide to.
+                </li>
+                <li>
+                  <strong>Movement.</strong> The player's position is smoothly interpolated to the calculated
+                  attack position using DOTween, closing the distance to the enemy so combos can chain across a group
+                  without breaking the flow of movement.
+                </li>
+                <li>
+                  <strong>Attack.</strong> The attack animation plays through Unity's Animator, with transition
+                  durations and interruption sources tuned so one attack cancels cleanly into the next.
+                </li>
+                <li>
+                  <strong>Impact.</strong> On contact, the hit triggers a shockwave, impact particles, a sound
+                  effect, and slight camera/screen shake.
+                </li>
+                <li>
+                  <strong>Reaction.</strong> The attack type is passed to the enemy's script, which selects a
+                  matching reaction animation.
+                </li>
+              </ol>
+              <p>
+                Keeping each stage separate is what keeps the code modular and easy to follow.
+              </p>
           </div>
         </details>
 

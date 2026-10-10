@@ -138,20 +138,21 @@
       </figure>
     </section>
 
-    <!-- ============ SIDE-BY-SIDE MEDIA (OPTIONAL) ============
-         Two images next to each other, such as before and after. They stack on phones. -->
+    <!-- ============ SIDE-BY-SIDE MEDIA ============ -->
     <section class="proj-section prose">
-      <h2>Before and After</h2>
-      <p>Use this layout to compare two things.</p>
+      <h2>Combat and Drones</h2>
+      <p>An overview of combat and drone enemies.</p>
 
       <div class="media-row">
         <figure class="media">
-          <img src="/images/PROJECT-before.jpg" alt="DESCRIBE the first image" loading="lazy">
-          <figcaption>Before</figcaption>
+          <img src="/images/boj_attack_diagram.png" alt="Combat diagram." loading="lazy">
+          <figcaption>Combat felt rigid when first designing this mechanic. To make it feel more fluid, an interpolation system was introduced. 
+            When the player is within a specific range of the enemy and the attack button is pressed, the player will automatically and smoothly move to the enemy's position with an offset.</figcaption>
         </figure>
         <figure class="media">
-          <img src="/images/PROJECT-after.jpg" alt="DESCRIBE the second image" loading="lazy">
-          <figcaption>After</figcaption>
+          <img src="/images/boj_drone_diagram.png" alt="Drone diagram." loading="lazy">
+          <figcaption>Creating hovering or flying enemies can be challenging, partly due to Unity not having a built-in system for it. One big problem with creating a drone-like enemy is collision detection. 
+            To solve this, I created a simple behavior to make the drone orbit the player. I can then ray-cast along this orbit path and change the orbit direction if an object is detected.</figcaption>
         </figure>
       </div>
     </section>

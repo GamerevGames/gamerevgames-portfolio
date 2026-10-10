@@ -1,1 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Blade of Jinshu | Travis Carpenter</title>
+<meta name="description" content="Third person hack n' slash action game.">
+<meta name="theme-color" content="#0f1117">
+
+<meta property="og:title" content="Blade of Jinshu | Travis Carpenter">
+<meta property="og:description" content="Third person hack n' slash action game.">
+<meta property="og:image" content="https://portfolio.gamerev.games/images/blade_jinshu_title.jpg">
+<meta property="og:type" content="website">
+
+<link rel="stylesheet" href="/style.css">
+
+<!--
+  ============================================================
+  HOW TO USE THIS TEMPLATE
+  ============================================================
+  1. Make a folder for the project, e.g.  projects/free-flow-combat/
+  2. Copy this file into it and name it  index.html
+     Final address:  https://portfolio.gamerev.games/projects/free-flow-combat/
+  3. Search the file for "EDIT:" and change each spot.
+  4. Delete any block marked "OPTIONAL" that you don't need.
+  5. Put images in your repo's /images folder, and refer to them like:  /images/ffc-hero.jpg
+  6. On the main page, point the card's link to  /projects/free-flow-combat/
+-->
+</head>
+
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">Travis Carpenter<span>.</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+
+  <!-- ============ PROJECT HEADER ============ -->
+  <div class="proj-hero">
+    <div class="wrap">
+      <a class="back-link" href="/#projects">&larr; All projects</a>
+
+      <!-- EDIT: project name, one-line tagline, tags, and main buttons -->
+      <h1>Blade of Jinshu</h1>
+      <p class="tagline">Betrayed and left to die, you rise as a cybernetic-enhanced warrior on a relentless path of revenge. 
+        Slash through corporate enforcers, master high-speed combat, and survive deadly challenges in a fractured world where every move counts. 
+        Upgrade your abilities and carve your way to vengeance!
+      </p>
+      <ul class="tags"><li>Unity</li><li>C#</li><li>Action</li><li>Hack n' Slash</li></ul>
+
+      <div class="btns">
+        <a class="btn primary" href="https://store.steampowered.com/app/3590120/Blade_of_Jinshu/">Steam</a>
+        <a class="btn ghost" href="https://github.com/TravisDCarpenter/CyberSamuraiDemo">Code Sample</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ============ MAIN VISUAL ============ -->
+    <figure class="media hero-media">
+      <img src="/images/boj_gameplay.gif" alt="Blade of Jinshu cyberbot fight." width="1600" height="900">
+    </figure>
+
+    <!-- ============ AT A GLANCE ============ -->
+    <div class="glance">
+      <aside class="facts" aria-label="Project details">
+        <h3>Details</h3>
+        <ul>
+          <li><b>Role:</b> Design &amp; programming</li>
+          <li><b>Team:</b> Solo</li>
+          <li><b>Timeline:</b> 2024&ndash;2025</li>
+          <li><b>Status:</b> Released</li>
+        </ul>
+      </aside>
+
+      <aside class="facts" aria-label="Tools used">
+        <h3>Tools used</h3>
+        <ul class="chips">
+          <li>Unity</li>
+          <li>C#</li>
+          <li>Blender</li>
+          <li>GIMP</li>
+          <li>Steam SDK</li>
+        </ul>
+      </aside>
+
+      <aside class="facts" aria-label="Highlighted skills">
+        <h3>Highlighted skills</h3>
+        <ul class="chips">
+          <li>Combat Systems</li>
+          <li>Complex Mechanics</li>
+          <li>Game AI</li>
+          <li>Technical Effects</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- ============ OVERVIEW ============ -->
+    <section class="proj-section prose">
+      <h2>Overview</h2>
+      <p>
+        <strong>Blade of Jinshu</strong> is a third-person action game built around fast, stylish melee combat in the vein of Devil May Cry,
+         with 3D puzzles and combat challenges. It's my first commercial release on Steam.
+      </p>
+      <p>
+        The project was built with combat at the forefront, so I focused on a modular, data driven attack system, responsive feel, and 
+        the feedback effects that make every hit feel worth it.
+      </p>
+      <ul>
+        <li><strong>Modular Combos:</strong> every move is a ScriptableObject that defines its animation, timing, damage, force, and more, so new attacks can be added without touching code.</li>
+        <li><strong>Finisher Moves:</strong> special attacks pause input and reposition the player and target before playing out.</li>
+        <li><strong>Smooth Attack Movement:</strong> an interpolation system glides the player to an attack offset, ensuring the hit will land.</li>
+        <li><strong>Combat Feedback:</strong> procedural blood, shockwaves, weapon trails, and a character lightning trail effect.</li>
+      </ul>
+    </section>
+
+    <!-- ============ FEATURE SECTION WITH ONE LARGE IMAGE ============ -->
+    <section class="proj-section prose">
+      <h2>Feature or Stage One</h2>
+      <p>Explain this part of the project. A short description followed by a large screenshot works well.</p>
+
+      <figure class="media">
+        <img src="/images/PROJECT-feature1.jpg" alt="DESCRIBE the screenshot" loading="lazy" width="1600" height="900">
+        <figcaption>Optional caption describing the image.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ SIDE-BY-SIDE MEDIA (OPTIONAL) ============
+         Two images next to each other, such as before and after. They stack on phones. -->
+    <section class="proj-section prose">
+      <h2>Before and After</h2>
+      <p>Use this layout to compare two things.</p>
+
+      <div class="media-row">
+        <figure class="media">
+          <img src="/images/PROJECT-before.jpg" alt="DESCRIBE the first image" loading="lazy">
+          <figcaption>Before</figcaption>
+        </figure>
+        <figure class="media">
+          <img src="/images/PROJECT-after.jpg" alt="DESCRIBE the second image" loading="lazy">
+          <figcaption>After</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ GIF OR LOOPING CLIP (OPTIONAL) ============
+         A real GIF file also works: just use <img src="/images/clip.gif" ...> inside a figure.
+         For long clips, convert to .mp4. It will be roughly 10x smaller and load faster. -->
+    <section class="proj-section prose">
+      <h2>In Action</h2>
+      <p>Show the feature working.</p>
+
+      <figure class="media">
+        <video src="/images/PROJECT-clip.mp4" autoplay loop muted playsinline preload="metadata"
+               aria-label="DESCRIBE what happens in the clip"></video>
+        <figcaption>Short caption for the clip.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ YOUTUBE VIDEO (OPTIONAL) ============ -->
+    <section class="proj-section prose">
+      <h2>Video</h2>
+      <p>A longer breakdown, trailer, or devlog.</p>
+
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="DESCRIBE the video"
+                loading="lazy" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- ============ ACCORDIONS (CLICK-TO-EXPAND DETAILS) ============
+         Use these for deeper information that not everyone needs.
+         Add the word  open  to a <details> tag to have it start expanded:  <details open>
+         To add another item, copy a whole <details> ... </details> block. -->
+    <section class="proj-section prose">
+      <h2>Going Deeper</h2>
+      <p>Click a section to expand it.</p>
+
+      <div class="accordion">
+
+        <details>
+          <summary>How it works</summary>
+          <div class="acc-body">
+            <p>Explain the system or approach in plain language.</p>
+            <ul>
+              <li>Step or component one</li>
+              <li>Step or component two</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Technical breakdown</summary>
+          <div class="acc-body">
+            <p>Describe the implementation. Code snippets go inside <code>&lt;pre&gt;&lt;code&gt;</code>.
+               Characters like &lt; and &gt; need to be written as <code>&amp;lt;</code> and <code>&amp;gt;</code>.</p>
+<pre><code>// Example snippet
+public void Attack(Transform target)
+{
+    transform.DOMove(target.position, 0.2f);
+}</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>Learning outcomes</summary>
+          <div class="acc-body">
+            <p>What you learned from building this project.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Challenges</summary>
+          <div class="acc-body">
+            <p>What was hard, and how you solved it.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- ============ CODE / LINKS ============ -->
+    <section class="proj-section prose">
+      <h2>Code and Links</h2>
+      <p>Code for this project is available on GitHub.</p>
+      <div class="btns">
+        <a class="btn primary" href="#">View code on GitHub</a>
+        <a class="btn ghost" href="#">Watch on YouTube</a>
+      </div>
+    </section>
+
+    <!-- ============ PREVIOUS / NEXT PROJECT (OPTIONAL) ============ -->
+    <nav class="proj-nav" aria-label="More projects">
+      <a class="btn ghost" href="/projects/previous-project/">&larr; Previous project</a>
+      <a class="btn ghost" href="/projects/next-project/">Next project &rarr;</a>
+    </nav>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; <span id="year">2026</span> Travis Carpenter &middot; Gamerev Games
+  </div>
+</footer>
+
+<!-- Shared script: footer year, new-tab links for other websites, and click-to-enlarge screenshots -->
+<script src="/site.js" defer></script>
+</body>
+</html>
 

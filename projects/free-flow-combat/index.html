@@ -185,7 +185,7 @@
                   durations and interruption sources tuned so one attack cancels cleanly into the next.
                 </li>
                 <li>
-                  <strong>Impact.</strong> On contact, the hit triggers a shockwave, impact particles, a sound
+                  <strong>Impact.</strong> On contact, the hit triggers an animation even which instantiates a shockwave, impact particles, a sound
                   effect, and slight camera/screen shake.
                 </li>
                 <li>
@@ -202,13 +202,52 @@
         <details>
           <summary>Technical breakdown</summary>
           <div class="acc-body">
-            <p>Describe the implementation. Code snippets go inside <code>&lt;pre&gt;&lt;code&gt;</code>.
-               Characters like &lt; and &gt; need to be written as <code>&amp;lt;</code> and <code>&amp;gt;</code>.</p>
-<pre><code>// Example snippet
-public void Attack(Transform target)
-{
-    transform.DOMove(target.position, 0.2f);
-}</code></pre>
+            <p>
+                Built on Unity's Starter Assets third-person controller, with <strong>DOTween</strong> handling
+                movement and rotation.
+              </p>
+          
+              <h3>Camera-Relative Targeting</h3>
+              <p>
+                Player input is converted to a world-space direction relative to the camera, and a sphere cast
+                along it finds the enemy being pointed at. Using a sphere instead of a thin ray provides a buffer, and keeps targeting
+                forgiving.
+              </p>
+          <pre><code>inputDirection = (forward.normalized * input.move.y + right.normalized * input.move.x).normalized;
+          
+          if (Physics.SphereCast(transform.position, 3f, inputDirection, out RaycastHit hit, 10f, enemyLayer))
+          {
+              currentTarget = hit.collider.transform;
+          }</code></pre>
+          
+              <h3>Closing the Distance</h3>
+              <p>
+                When an attack starts, DOTween turns the player toward the target and glides them to a point
+                0.85 units short of it, so they land in striking range. Attacks cycle through four animations,
+                and movement is locked while one plays.
+              </p>
+          
+              <h3>Animation-Event Hit Detection</h3>
+              <p>
+                An Animation Event fires on the exact frame the hit should land. A short raycast confirms
+                contact, then the shockwave, particles and a random punch sound spawn at the hit point, and the
+                attack name is passed to the enemy so it plays a matching reaction. Tying the hit to the
+                animation keeps the effects in sync with the visuals.
+              </p>
+          <pre><code>public void OnAnimationAttack()
+          {
+              Ray ray = new Ray(transform.position + raycastOffset, transform.forward);
+              if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance, enemyLayer))
+              {
+                  Enemy enemy = hit.collider.GetComponent&lt;Enemy&gt;();
+                  if (enemy != null)
+                  {
+                      Instantiate(shockwaveEffect, hit.point, Quaternion.identity);
+                      Instantiate(hitParticles, hit.point, Quaternion.identity);
+                      enemy.OnHitReaction(attackString);
+                  }
+              }
+          }</code></pre>
           </div>
         </details>
 
@@ -237,7 +276,7 @@ public void Attack(Transform target)
                 system was meant to have.
              </p>
              <p>
-                <strong>Solution.</strong> I went delve further into Unity's Animator system and tuned parameters such as
+                <strong>Solution.</strong> I delve further into Unity's Animator system and tuned parameters such as
                 transition durations and interruption sources, so each attack could flow cleanly into the next.
              </p>
              <p>

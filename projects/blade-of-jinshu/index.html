@@ -196,40 +196,57 @@
       <div class="accordion">
 
         <details>
-          <summary>How it works</summary>
-          <div class="acc-body">
-            <p>Explain the system or approach in plain language.</p>
-            <ul>
-              <li>Step or component one</li>
-              <li>Step or component two</li>
-            </ul>
-          </div>
-        </details>
-
-        <details>
           <summary>Technical breakdown</summary>
           <div class="acc-body">
-            <p>Describe the implementation. Code snippets go inside <code>&lt;pre&gt;&lt;code&gt;</code>.
-               Characters like &lt; and &gt; need to be written as <code>&amp;lt;</code> and <code>&amp;gt;</code>.</p>
-<pre><code>// Example snippet
-public void Attack(Transform target)
-{
-    transform.DOMove(target.position, 0.2f);
-}</code></pre>
+            <h3>Orbiting the player</h3>
+            <p>Each drone circles the player at a set radius. Every frame, the drone converts its current orbit angle into a point on a circle around the player, then adds a vertical bob using a sine wave so it hovers instead of gliding rigidly.</p>
+        
+        <pre><code>float rad = _orbitAngle * Mathf.Deg2Rad;
+        Vector3 orbitOffset = new Vector3(Mathf.Cos(rad), 0f, Mathf.Sin(rad)) * movementRadius;
+        
+        Vector3 targetPosition = playerTransform.position + orbitOffset;
+        targetPosition.y = Mathf.Sin(Time.time * bobSpeed) * bobHeight;</code></pre>
+        
+            <h3>Avoiding obstacles without pathfinding</h3>
+            <p>Instead of calculating a route around geometry, each drone raycasts toward its next position. If something on the obstacle layer is in the way, it flips its orbit direction and circles the other way around the player.</p>
+        
+        <pre><code>Vector3 direction = (targetPosition - transform.position).normalized;
+        
+        if (Physics.Raycast(transform.position, direction, movementRadius, obstacleLayer))
+        {
+            _orbitDirection *= -1;
+        }</code></pre>
+        
+            <h3>Why this approach</h3>
+            <p>A navmesh or A* solution would be overkill for flying enemies that only need to stay near the player. One raycast per drone per frame is cheap, so many drones can be on screen at once. 
+              Reversing direction also makes the drones feel reactive, since they visibly change course when they hit something.</p>
           </div>
         </details>
 
         <details>
-          <summary>Learning outcomes</summary>
+          <summary>Learning Outcomes</summary>
           <div class="acc-body">
-            <p>What you learned from building this project.</p>
+            <ul>
+              <li><strong>Data-Driven Combat Design:</strong> Building attacks as modular ScriptableObjects (animation, timing, damage, force, collider windows) made it easy to add and tune moves without touching code.</li>
+              <li><strong>Game Feel:</strong> Small additions like hit effects, camera shake, FOV shifts, and sound changed how the combat felt more than any mechanical change.</li>
+              <li><strong>Enemy AI Basics:</strong> Drone movement with obstacle avoidance through raycasts taught me how simple rules can produce believable behavior.</li>
+              <li><strong>Shipping a Game:</strong> Taking a project through to a Steam release taught me a lot about scope, polish, and finishing.</li>
+            </ul>
           </div>
         </details>
 
         <details>
           <summary>Challenges</summary>
           <div class="acc-body">
-            <p>What was hard, and how you solved it.</p>
+            <h3>Stiff, rooted attacks</h3>
+            <p><strong>Problem:</strong> Early combat felt rigid. Each swing played in place, so attacks didn't connect with enemies or flow together.</p>
+            <p><strong>Solution:</strong> I added interpolated attack movement that carries the player toward the target during each swing, and I moved the timing into the combo data so I could tune it per move.</p>
+            <p><strong>Takeaway:</strong> Good combat feel comes from movement and timing as much as animation.</p>
+        
+            <h3>Drones getting stuck on geometry</h3>
+            <p><strong>Problem:</strong> Drones orbit the player, and they would get caught on walls and obstacles.</p>
+            <p><strong>Solution:</strong> Each drone raycasts ahead and reverses its orbit direction when it detects an obstacle.</p>
+            <p><strong>Takeaway:</strong> A simple, cheap rule solved a problem I'd expected to need full pathfinding for.</p>
           </div>
         </details>
 
@@ -242,7 +259,7 @@ public void Attack(Transform target)
       <p>Code for this project is available on GitHub.</p>
       <div class="btns">
         <a class="btn primary" href="#">View code on GitHub</a>
-        <a class="btn ghost" href="#">Watch on YouTube</a>
+        <a class="btn ghost" href="https://youtube.com/playlist?list=PLQ_SVZ5L3kjY&si=gn5Lawl0eXALI1vf">Watch on YouTube</a>
       </div>
     </section>
 

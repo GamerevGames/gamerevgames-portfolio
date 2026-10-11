@@ -186,16 +186,25 @@
       <div class="accordion">
 
         <details>
-          <summary>Learning outcomes</summary>
-          <div class="acc-body">
-            <p>What you learned from building this project.</p>
-          </div>
-        </details>
-
-        <details>
           <summary>Challenges</summary>
           <div class="acc-body">
-            <p>What was hard, and how you solved it.</p>
+            <h3>Fleeing AI getting stuck in corners</h3>
+            <p><strong>Problem:</strong> One of the enemy viruses flees from the player, and it would often run into a corner and get stuck.</p>
+            <p><strong>Solution:</strong> I wrote a custom navigation mesh fix that smoothed out the hard corners. This reduced the problem but didn't eliminate it.</p>
+            <p><strong>Takeaway:</strong> With more time, I would rebuild the behavior so the AI steers away from corners in general, instead of patching the mesh around them.</p>
+        
+            <h3>Projectiles spawning in the wrong place</h3>
+            <p><strong>Problem:</strong> Bullets sometimes failed to appear in front of the weapon, depending on which direction the player was facing.</p>
+            <p><strong>Solution:</strong> Adjusting the projectile's spawn offset fixed it.</p>
+            <p><strong>Takeaway:</strong> Spawn positions need to be tested from every facing direction, not just the one you develop in.</p>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Outcome</summary>
+          <div class="acc-body">
+            <p>The team delivered a complete, playable first-person shooter level with custom AI, interactable objects, and working gameplay systems.</p>
+            <p>The project also gave me practice with teamwork, adapting to constraints, and communicating clearly, which closely mirrors working in a real studio.</p>
           </div>
         </details>
 

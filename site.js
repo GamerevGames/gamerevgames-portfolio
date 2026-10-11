@@ -40,4 +40,29 @@
       });
     });
   }
+
+  // 4) Slideshows: prev/next buttons and a "1 / N" counter.
+  //    Needs the .slideshow markup (.slides, .prev, .next, .slide-count).
+  document.querySelectorAll(".slideshow").forEach(function (show) {
+    var track = show.querySelector(".slides");
+    var count = show.querySelector(".slide-count");
+    var prev = show.querySelector(".prev");
+    var next = show.querySelector(".next");
+    if (!track) return;
+    var total = track.children.length;
+
+    function update() {
+      var i = Math.round(track.scrollLeft / track.clientWidth) + 1;
+      if (count) count.textContent = i + " / " + total;
+    }
+    function go(dir) {
+      track.scrollBy({ left: dir * track.clientWidth, behavior: "smooth" });
+    }
+
+    if (prev) prev.addEventListener("click", function () { go(-1); });
+    if (next) next.addEventListener("click", function () { go(1); });
+    track.addEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    update();
+  });
 })();

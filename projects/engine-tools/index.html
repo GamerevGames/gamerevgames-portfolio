@@ -57,27 +57,10 @@
       <img src="/images/patrol_points.gif" alt="Patrol point tool in action." width="1600" height="900">
     </figure>
 
-    <!-- Option B: looping clip that behaves like a GIF but is MUCH smaller (use an .mp4) -->
-    <!--
-    <figure class="media hero-media">
-      <video src="/images/PROJECT-hero.mp4" poster="/images/PROJECT-hero.jpg"
-             autoplay loop muted playsinline preload="metadata"></video>
-    </figure>
-    -->
-
-    <!-- Option C: YouTube trailer. Replace VIDEO_ID with the part after "v=" in the video's address -->
-    <!--
-    <div class="hero-media video-wrap">
-      <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Project trailer"
-              loading="lazy" allowfullscreen></iframe>
-    </div>
-    -->
-
     <!-- ============ AT A GLANCE ============ -->
     <div class="glance">
       <aside class="facts" aria-label="Project details">
         <h3>Details</h3>
-        <!-- EDIT: keep what applies -->
         <ul>
           <li><b>Role:</b> Programming</li>
           <li><b>Team:</b> Solo</li>
@@ -118,21 +101,24 @@
       </ul>
     </section>
 
-    <!-- ============ FEATURE SECTION WITH ONE LARGE IMAGE ============ -->
+    <!-- ============ PATROL POINTS SECTION ============ -->
     <section class="proj-section prose">
-      <h2>Feature or Stage One</h2>
-      <p>Explain this part of the project. A short description followed by a large screenshot works well.</p>
+      <h2>Dynamic Patrol System</h2>
+      <p>Manually adding patrol point transforms can quickly become messy. Keep scene hierarchy clean by dynamically adding patrol points via the inspector.</p>
 
       <figure class="media">
-        <img src="/images/PROJECT-feature1.jpg" alt="DESCRIBE the screenshot" loading="lazy" width="1600" height="900">
-        <figcaption>Optional caption describing the image.</figcaption>
+        <img src="/images/add_points.gif" alt="Dynamically add patrol points." loading="lazy" width="1600" height="900">
+        <figcaption>
+          Patrol points can then be added with the click of a button and moved around within the scene view. 
+          The patrol route can also be set to looped. If the route is not looped, the AI performs the route in reverse. 
+          Gizmos for this tool can be easily toggled with the click of a button.
+        </figcaption>
       </figure>
     </section>
 
-    <!-- ============ SIDE-BY-SIDE MEDIA (OPTIONAL) ============
-         Two images next to each other, such as before and after. They stack on phones. -->
+    <!-- ============ OLD VS NEW PATROL METHOD ============ -->
     <section class="proj-section prose">
-      <h2>Before and After</h2>
+      <h2>Comparison</h2>
       <p>Use this layout to compare two things.</p>
 
       <div class="media-row">

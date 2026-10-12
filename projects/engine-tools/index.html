@@ -119,7 +119,10 @@
     <!-- ============ OLD VS NEW PATROL METHOD ============ -->
     <section class="proj-section prose">
       <h2>Comparison</h2>
-      <p>Use this layout to compare two things.</p>
+      <p>
+        Patrol routes are traditionally built by scattering empty GameObjects through the scene hierarchy.
+        The custom inspector replaces that with a single list on the agent, so routes stay organized and each point can be added and moved directly in the scene view.
+      </p>
 
       <div class="media-row">
         <figure class="media">
@@ -141,7 +144,8 @@
       <figure class="media">
         <img src="/images/serialize-inspector.gif" alt="Custom SerializeObject inspector window." loading="lazy" width="1600" height="900">
         <figcaption>
-          Placeholder caption here.
+          Selecting different ScriptableObject in Unity's inspector normally drops the reference to the currently selected agent, which can slow iteration.
+          This editor window keeps the agent linked while exposing each property of its configuration, so settings can be adjusted and tested without leaving the agent.
         </figcaption>
       </figure>
     </section>

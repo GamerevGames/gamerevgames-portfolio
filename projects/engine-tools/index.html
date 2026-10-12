@@ -105,7 +105,10 @@
     <!-- ============ PATROL POINTS SECTION ============ -->
     <section class="proj-section prose">
       <h2>Dynamic Patrol System</h2>
-      <p>Manually adding patrol point transforms can quickly become messy. Keep scene hierarchy clean by dynamically adding patrol points via the inspector.</p>
+      <p>
+        Manually adding patrol point transforms can quickly become messy. Keep scene hierarchy clean by dynamically adding patrol points via the inspector.
+        Patrol point lists can then be saved or loaded as a preset, further increasing iteration speed.
+      </p>
 
       <figure class="media">
         <img src="/images/add_points.gif" alt="Dynamically add patrol points." loading="lazy" width="1600" height="900">
@@ -151,10 +154,7 @@
       </figure>
     </section>
 
-    <!-- ============ ACCORDIONS (CLICK-TO-EXPAND DETAILS) ============
-         Use these for deeper information that not everyone needs.
-         Add the word  open  to a <details> tag to have it start expanded:  <details open>
-         To add another item, copy a whole <details> ... </details> block. -->
+    <!-- ============ ACCORDIONS (CLICK-TO-EXPAND DETAILS) ============ -->
     <section class="proj-section prose">
       <h2>Going Deeper</h2>
       <p>Click a section to expand it.</p>
@@ -162,40 +162,44 @@
       <div class="accordion">
 
         <details>
-          <summary>How it works</summary>
-          <div class="acc-body">
-            <p>Explain the system or approach in plain language.</p>
-            <ul>
-              <li>Step or component one</li>
-              <li>Step or component two</li>
-            </ul>
-          </div>
-        </details>
-
-        <details>
           <summary>Technical breakdown</summary>
           <div class="acc-body">
-            <p>Describe the implementation. Code snippets go inside <code>&lt;pre&gt;&lt;code&gt;</code>.
-               Characters like &lt; and &gt; need to be written as <code>&amp;lt;</code> and <code>&amp;gt;</code>.</p>
-<pre><code>// Example snippet
-public void Attack(Transform target)
-{
-    transform.DOMove(target.position, 0.2f);
-}</code></pre>
+            <h3>Dynamic Patrol System</h3>
+            <p>
+              A custom inspector on the AI agent stores every patrol point in one list. 
+              Points are edited in the Scene view with position handles, drawn as labeled gizmos with connecting lines, and every change is recorded for undo. 
+              When the agent is moved in the editor, the same offset is applied to all of its points so the route travels with it.
+            </p>
+            <p>
+              Routes can be saved as ScriptableObject presets. 
+              Points are stored relative to the agent when saved and converted back to world positions when loaded, so a preset works wherever the agent is placed.
+            </p>
+        
+        <pre><code>// Save each point relative to the agent
+        Vector3 localPos = m_Agent.transform.InverseTransformPoint(point.Position);</code></pre>
+        
+            <h3>Serialized Config Editor Window</h3>
+            <p>The editor window wraps the agent's ScriptableObject in a <code>SerializedObject</code> and draws every visible property automatically, so new config fields show up without any extra editor code. It listens for selection changes and re-links to whichever agent is selected, which avoids the reference being lost when switching between configs.</p>
+        
+        <pre><code>SerializedProperty property = _so.GetIterator();
+        if (property.NextVisible(true))
+        {
+            do { EditorGUILayout.PropertyField(property, true); }
+            while (property.NextVisible(false));
+        }</code></pre>
           </div>
         </details>
-
+        
         <details>
           <summary>Learning outcomes</summary>
           <div class="acc-body">
-            <p>What you learned from building this project.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Challenges</summary>
-          <div class="acc-body">
-            <p>What was hard, and how you solved it.</p>
+            <ul>
+              <li><strong>Unity Editor scripting:</strong> custom inspectors, Scene view handles, and editor windows.</li>
+              <li><strong>Working with serialization:</strong> using <code>SerializedObject</code> and <code>SerializedProperty</code> so the tools handle undo and saving correctly.</li>
+              <li><strong>World vs. local space:</strong> keeping routes attached to a moving agent and making presets reusable.</li>
+              <li><strong>Data-driven AI setup:</strong> storing patrol routes and agent configs as ScriptableObjects.</li>
+              <li><strong>Tool design:</strong> building small tools that remove repetitive steps and make iteration faster.</li>
+            </ul>
           </div>
         </details>
 
@@ -227,7 +231,6 @@ public void Attack(Transform target)
   </div>
 </footer>
 
-<!-- Shared script: footer year, new-tab links for other websites, and click-to-enlarge screenshots -->
 <script src="/site.js" defer></script>
 </body>
 </html>
